@@ -126,7 +126,7 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div class="vue3-player__wrapper">
         <video :src="src" :muted="muted" :autoplay="autoplay" :controls="controls" :loop="loop" :width="width"
             :height="height" :poster="poster" :preload="preload" :playsinline="true" ref="player" />
         <slot name="controls" :play="play" :pause="pause" :toggle-play="togglePlay" :playing="playing"

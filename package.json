@@ -1,8 +1,17 @@
 {
   "name": "vue3-player",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/vue3-player.umd.cjs",
+  "module": "./dist/vue3-player.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-player.js",
+      "require": "./dist/vue3-player.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
