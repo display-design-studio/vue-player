@@ -8,9 +8,9 @@ export default defineConfig({
     lib: {
       // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, 'lib/main.js'),
-      name: 'vue3-player',
+      name: 'vue-player',
       // the proper extensions will be added
-      fileName: 'vue3-player',
+      fileName: 'vue-player',
     },
     rollupOptions: {
       // make sure to externalize deps that shouldn't be bundled

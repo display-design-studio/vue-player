@@ -1,12 +1,52 @@
-# TO DO
-- [x] Convert VideoPlayer component from Options API to Composition API
-- [ ] Fix CSS
-- [x] Change style.css
-- [x] Change name to vue-player
+# Vue Player
+## Documentation
 
-# Step 1
-- [ ] Test the library with vimeo/youtube url
-- [ ] Write the doc
+### Props
+| name               | type    | required | default |
+|--------------------|---------|----------|---------|
+| src                | String  | true     |         |
+| controls           | Boolean | false    | false   |
+| loop               | Boolean | false    | false   |
+| width              | Number  | false    |         |
+| height             | Number  | false    |         |
+| autoplay           | Boolean | false    | false   |
+| muted              | Boolean | false    | false   |
+| poster             | String  | false    |         |
+| preload            | String  | false    | "auto"  |
+| showPlayerDuration | Boolean | false    | false   |
+| showPlayerTrack    | Boolean | false    | false   |
 
-## Step 2
-- [ ] Write the library for every framework (embla for video)
+```
+<template>
+    <VuePlayer :loop="true" />
+    </VuePlayer>
+</template>
+```
+
+### Events
+- @play
+- @pause
+- @ended
+- @loadeddata
+- @waiting
+- @playing
+- @timeupdate
+- @canplay
+- @canplaythrough
+- @statechanged
+
+```
+<script setup>
+    const myCustomFunction = ({ event }) => {
+        console.log(event)
+    }
+</script>
+
+<template>
+    <VuePlayer @play="myCustomFunction">
+        <VuePlayerControls />
+    </VuePlayer>
+</template>
+```
+
+### Style

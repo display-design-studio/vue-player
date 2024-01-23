@@ -1,7 +1,9 @@
 <script setup>
-import { inject } from 'vue'
+import { useVuePlayer } from '../utils/index.js'
 
-const { togglePlay, toggleMute, playing, videoMuted } = inject('vue-player')
+const { togglePlay, playing, toggleMute, videoMuted } = useVuePlayer()
+// const player = useVuePlayer()
+
 </script>
 
 <template>

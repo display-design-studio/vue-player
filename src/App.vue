@@ -3,19 +3,13 @@ import VuePlayer from './components/VuePlayer.vue'
 import MyControls from './components/MyControls.vue'
 
 
-import { ref } from "vue";
-
-const playerRef = ref(null)
-
-const onPlayerPlay = ({ event, player }) => {
-  playerRef.value.setPlaying(true);
+const onPlayerPlay = ({ event }) => {
+  console.log(event);
 };
-const onPlayerPause = ({ event, player }) => {
-  playerRef.value.setPlaying(false);
+const onPlayerPause = ({ event }) => {
 };
-const onPlayerEnded = ({ event, player }) => {
+const onPlayerEnded = ({ event }) => {
   // console.log(event.type);
-  playerRef.value.setPlaying(false);
 };
 const onPlayerLoadeddata = ({ event }) => {
   // console.log(event.type);
@@ -43,7 +37,8 @@ const playerStateChanged = ({ event }) => {
 
 <template>
   <main class="app">
-    <VuePlayer ref="playerRef" src="https://res.cloudinary.com/demo/video/upload/q_auto,f_auto/dog.mp4"
+    <VuePlayer
+      src="https://player.vimeo.com/progressive_redirect/playback/874123939/rendition/1080p/file.mp4?loc=external&log_user=0&signature=c35a89bdcb4a936dd64d6c27cdb535f51f4f160ff93b11e060ed6de4b472ef4a"
       poster="https://demo-res.cloudinary.com/video/upload/q_auto,f_auto,w_500/dog.jpg" :showPlayerDuration="true"
       :showPlayerTrack="true" :muted="true" :autoplay="false" :controls="false" :loop="true" @play="onPlayerPlay"
       @pause="onPlayerPause" @ended="onPlayerEnded" @loadeddata="onPlayerLoadeddata" @waiting="onPlayerWaiting"

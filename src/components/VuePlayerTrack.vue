@@ -5,11 +5,10 @@ defineProps({
 
 const emit = defineEmits(['seek'])
 
-const onInput = (event) => {
-    emit('seek', event.target.value)
+const onInput = (event: Event) => {
+    emit('seek', (event.target as HTMLInputElement).value)
 }
 </script>
-
 
 <template>
     <div class="vue-player__video-track">

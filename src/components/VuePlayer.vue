@@ -2,7 +2,7 @@
 import VuePlayerTrack from "./VuePlayerTrack.vue";
 import VuePlayerDuration from './VuePlayerDuration.vue'
 
-import { ref, onMounted, watch, provide } from 'vue'
+import { ref, onMounted, provide } from 'vue'
 
 const EVENTS = [
     "play",
@@ -59,16 +59,21 @@ const bindEvents = () => {
 
 const bindVideoEvent = (which) => {
     playerRef.value.addEventListener(which, (event) => {
-        if (which === "loadeddata") {
-            duration.value = playerRef.value.duration
-        }
-        if (which === "timeupdate") {
-            percentagePlayed.value =
-                (playerRef.value.currentTime / playerRef.value.duration) * 100;
-            time.value = playerRef.value.currentTime;
+
+        switch (which) {
+            case 'loadeddata':
+                duration.value = playerRef.value.duration
+                break;
+            case 'timeupdate':
+                percentagePlayed.value =
+                    (playerRef.value.currentTime / playerRef.value.duration) * 100;
+                time.value = playerRef.value.currentTime;
+                break;
+            default:
+                break;
         }
 
-        emit(which, { event, player: playerRef.value })
+        emit(which, { event })
     }, true)
 }
 
@@ -98,22 +103,14 @@ const seekToPercentage = (percentage) => {
     playerRef.value.currentTime = (percentage / 100) * duration.value;
 }
 
-
-const mute = () => {
-    setMuted(true)
-}
-
-const unmute = () => {
-    setMuted(false)
-}
-
 const toggleMute = () => {
     if (videoMuted.value) {
-        unmute()
+        setMuted(false)
     } else {
-        mute()
+        setMuted(true)
     }
 }
+
 const setMuted = (state) => {
     playerRef.value.muted = state
     videoMuted.value = state
@@ -130,23 +127,13 @@ provide('vue-player', {
     toggleMute,
     videoMuted
 })
-
-defineExpose({
-    setPlaying,
-    setMuted
-})
 </script>
 
 <template>
     <div class="vue-player">
         <video ref="playerRef" :src="src" :muted="muted" :autoplay="autoplay" :controls="controls" :loop="loop"
             :width="width" :height="height" :poster="poster" :preload="preload" :playsinline="true" />
-        <!-- <slot name="controls" :play="play" :pause="pause" :toggle-play="togglePlay" :playing="playing"
-            :percentage-played="percentagePlayed" :seek-to-percentage="seekToPercentage" :duration="duration"
-            :convert-time-to-duration="convertTimeToDuration" :video-muted="videoMuted" :toggle-mute="toggleMute"></slot> -->
-
         <slot />
-
         <VuePlayerDuration v-if="showPlayerDuration" :time="time" :duration="duration" separator="/" />
         <VuePlayerTrack v-if="showPlayerTrack" :percentage="percentagePlayed" @seek="seekToPercentage" />
     </div>
