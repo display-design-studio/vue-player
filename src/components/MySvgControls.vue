@@ -1,5 +1,9 @@
 <script setup>
 import { inject } from 'vue'
+import Mute from './Mute.vue'
+import Unmute from './Unmute.vue'
+import Play from './Play.vue'
+import Pause from './Pause.vue'
 
 const { togglePlay, toggleMute, playing, videoMuted } = inject('vue-player')
 </script>
@@ -7,10 +11,13 @@ const { togglePlay, toggleMute, playing, videoMuted } = inject('vue-player')
 <template>
     <div class="vue-player__controls">
         <button @click="togglePlay()" class="vue-player__controls-toggleplay">
-            {{ playing ? "pause" : "play" }}
+            <Pause v-if="playing"/>
+            <Play v-else/>
+
         </button>
         <button @click="toggleMute()" class="vue-player__controls-togglemute">
-            {{ videoMuted ? "unmute" : "mute" }}
+            <Unmute v-if="videoMuted "/>
+            <Mute v-else/>
         </button>
     </div>
 </template>
@@ -32,11 +39,18 @@ const { togglePlay, toggleMute, playing, videoMuted } = inject('vue-player')
   display: block;
   background-color: white;
   border: none;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  text-transform: uppercase;
-  border-radius: 5px;
-  padding: 2px 5px;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 
 }
 </style>

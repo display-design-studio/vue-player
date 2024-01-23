@@ -13,9 +13,11 @@ const convertTimeToDuration = (seconds) => {
 </script>
 
 <template>
-    <div class="vue-player__controls-time">
-        <span>{{ convertTimeToDuration(time) }}</span>
-        <span>{{ separator }}</span>
-        <span>{{ convertTimeToDuration(duration) }}</span>
+    <div class="vue-player__timestamp">
+        <div class="vue-player__timestamp-inner">
+            <p class="vue-player__current-time">{{ convertTimeToDuration(time) }}</p>
+            <p class="vue-player__separator">{{ separator }}</p>
+            <p class="vue-player__duration">{{ convertTimeToDuration(duration) }}</p>
+        </div>
     </div>
 </template>
