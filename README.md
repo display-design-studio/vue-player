@@ -92,7 +92,7 @@ const { togglePlay, playing, toggleMute, videoMuted } = useVuePlayer()
 | Name                     | Type          | Required       | Default       | Description |
 |--------------------------|---------------|----------------|---------------|-------------|
 | ```src```                | ```String```  | ```true```     |               | Video source |
-| ```controls ```          | ```Boolean``` | ```false```    | ```false```   | Enable native video controls            |
+| ```controls```          | ```Boolean``` | ```false```    | ```false```   | Enable native video controls            |
 | ```loop```               | ```Boolean``` | ```false```    | ```false```   | Enable video loop            |
 | ```width```              | ```Number```  | ```false```    |               | Video width           |
 | ```height```             | ```Number```  | ```false```    |               | Video height            |
@@ -110,7 +110,7 @@ const { togglePlay, playing, toggleMute, videoMuted } = useVuePlayer()
 </template>
 ```
 ## Events
-We have chosen the following events, but they may change in the future. 
+We have chosen the following events, but they may change. 
 
 See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#events) for more info.
 | Event                 | Description          |
@@ -120,10 +120,10 @@ See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#events
 |```ended```           | Triggered when the video end    |
 |```loadeddata```      | The loadeddata event is fired when the frame at the current playback position of the media has finished loading; often the first frame. |
 |```waiting```         | The waiting event is fired when playback has stopped because of a temporary lack of data. |
-|```playing```         | The playing event is fired after playback is first started, and whenever it is restarted. For example it is fired when playback resumes after having been paused or delayed due to lack of data. |
+|```playing```         | The playing event is fired after playback is first started, and whenever it is restarted. For example, it is fired when playback resumes after having been paused or delayed due to a lack of data. |
 |```timeupdate```      | The timeupdate event is fired when the time indicated by the currentTime attribute has been updated.|
-|```canplay```         | The canplay event is fired when the user agent can play the media, but estimates that not enough data has been loaded to play the media up to its end without having to stop for further buffering of content.                        |
-|```canplaythrough```  | The canplaythrough event is fired when the user agent can play the media, and estimates that enough data has been loaded to play the media up to its end without having to stop for further buffering of content. |
+|```canplay```         | The canplay event is fired when the user agent can play the media but estimates that not enough data has been loaded to play the media up to its end without having to stop for further buffering of content.                        |
+|```canplaythrough```  | The canplaythrough event is fired when the user agent can play the media and estimates that enough data has been loaded to play the media up to its end without having to stop for further buffering of content. |
 |```statechanged```    | Triggered when a state changed    |
 
 #### Example:
@@ -267,10 +267,3 @@ These classes have already been included in the components.
   box-shadow: -245px 0 0 245px black;
 }
 ```
-
-## TODO
-- [ ] change inject export for `useVuePlayer()`
-- [ ] Add fullscreen feature
-- [ ] Add PiP (picture in picture) feature (optional)
-- [ ] Add playbackRate feature (optional)
-- [ ] Add download feature (optional)
