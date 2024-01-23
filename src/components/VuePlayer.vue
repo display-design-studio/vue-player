@@ -1,7 +1,6 @@
 <script setup>
 import VuePlayerTrack from "./VuePlayerTrack.vue";
 import VuePlayerDuration from './VuePlayerDuration.vue'
-
 import { ref, onMounted, provide } from 'vue'
 
 const EVENTS = [
@@ -52,29 +51,23 @@ const videoMuted = ref(props.muted)
 const time = ref(0);
 
 const bindEvents = () => {
-    EVENTS.forEach((event) => {
-        bindVideoEvent(event);
-    });
-}
+    EVENTS.forEach((customEvent) => {
+        playerRef.value.addEventListener(customEvent, (event) => {
 
-const bindVideoEvent = (which) => {
-    playerRef.value.addEventListener(which, (event) => {
-
-        switch (which) {
-            case 'loadeddata':
+            if (customEvent == "canplay") {
                 duration.value = playerRef.value.duration
-                break;
-            case 'timeupdate':
+            }
+
+            if (customEvent == "timeupdate") {
                 percentagePlayed.value =
                     (playerRef.value.currentTime / playerRef.value.duration) * 100;
                 time.value = playerRef.value.currentTime;
-                break;
-            default:
-                break;
-        }
+            }
 
-        emit(which, { event })
-    }, true)
+            emit(customEvent, { event })
+        }, true)
+
+    });
 }
 
 const play = () => {
@@ -120,7 +113,6 @@ onMounted(() => {
     bindEvents()
 })
 
-
 provide('vue-player', {
     togglePlay,
     playing,
@@ -134,7 +126,7 @@ provide('vue-player', {
         <video ref="playerRef" :src="src" :muted="muted" :autoplay="autoplay" :controls="controls" :loop="loop"
             :width="width" :height="height" :poster="poster" :preload="preload" :playsinline="true" />
         <slot />
-        <VuePlayerDuration v-if="showPlayerDuration" :time="time" :duration="duration" separator="/" />
+        <VuePlayerDuration v-if="showPlayerDuration" :time="time" :duration="duration" />
         <VuePlayerTrack v-if="showPlayerTrack" :percentage="percentagePlayed" @seek="seekToPercentage" />
     </div>
 </template>

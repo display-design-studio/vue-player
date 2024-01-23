@@ -2,7 +2,6 @@
 import { useVuePlayer } from '../utils/context.js'
 
 const { togglePlay, playing, toggleMute, videoMuted } = useVuePlayer()
-// const player = useVuePlayer()
 
 </script>
 
@@ -16,6 +15,7 @@ const { togglePlay, playing, toggleMute, videoMuted } = useVuePlayer()
     </button>
   </div>
 </template>
+
 <style scoped>
 .vue-player__controls {
   position: absolute;

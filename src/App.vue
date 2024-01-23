@@ -71,7 +71,6 @@ const playerStateChanged = ({ event }) => {
   font-size: 18px;
 }
 
-/* You can customize the player with prebuilt classes */
 .vue-player {
   width: 100%;
   position: relative;
@@ -164,4 +163,5 @@ const playerStateChanged = ({ event }) => {
   cursor: ew-resize;
   background: black;
   box-shadow: -245px 0 0 245px black;
-}</style>
+}
+</style>
