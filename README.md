@@ -112,7 +112,7 @@ const { togglePlay, playing, toggleMute, videoMuted } = useVuePlayer()
 ## Events
 We have chosen the following events, but they may change in the future. 
 
-See [MDN Events](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#events) for more info.
+See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video#events) for more info.
 | Event                 | Description          |
 |-----------------------|---------------------------|
 |```play```            | Triggered when the video starts |
