@@ -1,7 +1,6 @@
 # Vue Player
-## Documentation
-
-### Props
+---
+## Props
 | name               | type    | required | default |
 |--------------------|---------|----------|---------|
 | src                | String  | true     |         |
@@ -22,8 +21,8 @@
     </VuePlayer>
 </template>
 ```
-
-### Events
+---
+## Events
 - @play
 - @pause
 - @ended
@@ -49,4 +48,5 @@
 </template>
 ```
 
-### Style
+---
+## Style

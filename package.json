@@ -1,15 +1,16 @@
 {
-  "name": "vue3-player",
+  "name": "vue-player",
+  "author": "https://www.display.design/",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/vue3-player.umd.cjs",
-  "module": "./dist/vue3-player.js",
+  "main": "./dist/vue-player.umd.cjs",
+  "module": "./dist/vue-player.js",
   "exports": {
     ".": {
-      "import": "./dist/vue3-player.js",
-      "require": "./dist/vue3-player.umd.cjs"
+      "import": "./dist/vue-player.js",
+      "require": "./dist/vue-player.umd.cjs"
     }
   },
   "scripts": {
