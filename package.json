@@ -3,6 +3,12 @@
   "author": "display-studio (https://www.display.design/)",
   "version": "0.0.2",
   "homepage": "https://github.com/display-design-studio/vue-player",
+  "keywords": [
+    "vue",
+    "video",
+    "html5",
+    "player"
+  ],
   "license": "MIT",
   "type": "module",
   "files": [
