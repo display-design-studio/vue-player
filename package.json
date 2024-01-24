@@ -1,7 +1,8 @@
 {
   "name": "@display-studio/vue-player",
+  "description": "Lightweight, customizable, and easy-to-implement vue video player.",
   "author": "display-studio (https://www.display.design/)",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "homepage": "https://github.com/display-design-studio/vue-player",
   "keywords": [
     "vue",
