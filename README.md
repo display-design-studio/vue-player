@@ -36,6 +36,7 @@ import { VuePlayer } from '@display-studio/vue-player'
 <template>
     <div>
         <VuePlayer>
+          <!--useVuePlayer() within a VuePlayer instance -->
             <MyControls />
         </VuePlayer>
     </div>
