@@ -16,9 +16,9 @@ import { VuePlayer } from '@display-studio/vue-player'
 
 <template>
     <div>
-        <VideoPlayer src="" poster="" @play="">
+        <VuePlayer src="" poster="" @play="">
             // Your custom controls here
-        </VideoPlayer>
+        </VuePlayer>
     </div>
 </template>
 ```
@@ -35,9 +35,9 @@ import { VuePlayer } from '@display-studio/vue-player'
 
 <template>
     <div>
-        <VideoPlayer>
+        <VuePlayer>
             <MyControls />
-        </VideoPlayer>
+        </VuePlayer>
     </div>
 </template>
 ```
@@ -46,16 +46,16 @@ import { VuePlayer } from '@display-studio/vue-player'
 ```js
 <script setup>
 import { useVuePlayer } from '@display-studio/vue-player'
-const { togglePlay, playing, toggleMute, videoMuted } = useVuePlayer()
+const player = useVuePlayer()
 </script>
 
 <template>
   <div class="vue-player__controls">
-    <button @click="togglePlay()" class="vue-player__controls-toggleplay">
-      {{ playing ? "pause" : "play" }}
+    <button @click="player.togglePlay()" class="vue-player__controls-toggleplay">
+      {{ player.playing ? "pause" : "play" }}
     </button>
-    <button @click="toggleMute()" class="vue-player__controls-togglemute">
-      {{ videoMuted ? "unmute" : "mute" }}
+    <button @click="player.toggleMute()" class="vue-player__controls-togglemute">
+      {{ player.videoMuted ? "unmute" : "mute" }}
     </button>
   </div>
 </template>

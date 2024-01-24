@@ -1,5 +1,3 @@
 import { inject } from 'vue'
 
-export const useVuePlayer = () => {
-    return inject('vue-player')
-}
+export const useVuePlayer = () => inject('vue-player')

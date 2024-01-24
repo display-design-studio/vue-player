@@ -1,7 +1,7 @@
 <script setup>
 import VuePlayerTrack from "./VuePlayerTrack.vue";
 import VuePlayerDuration from './VuePlayerDuration.vue'
-import { ref, onMounted, provide } from 'vue'
+import { ref, onMounted, provide, reactive } from 'vue'
 
 const EVENTS = [
     "play",
@@ -113,12 +113,14 @@ onMounted(() => {
     bindEvents()
 })
 
-provide('vue-player', {
+const injectedReactive = reactive({
     togglePlay,
     playing,
     toggleMute,
     videoMuted
 })
+
+provide('vue-player', injectedReactive)
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script setup>
 import VuePlayer from './components/VuePlayer.vue'
-import MyControls from './components/MyControls.vue'
-import MySvgControls from './components/MySvgControls.vue'
+import MyControls from './components/custom/MyControls.vue'
+import MySvgControls from './components/custom/MySvgControls.vue'
 import './assets/reset.css'
 
 const onPlayerPlay = ({ event }) => {

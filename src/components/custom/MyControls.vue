@@ -1,5 +1,5 @@
 <script setup>
-import { useVuePlayer } from '../utils/context.js'
+import { useVuePlayer } from '../../utils/context.js'
 
 const { togglePlay, playing, toggleMute, videoMuted } = useVuePlayer()
 
