@@ -22,6 +22,15 @@ import './assets/reset.css'
 </template>
 
 <style>
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  height: 100vh;
+}
+
 .title {
   width: 100%;
   text-align: center;
