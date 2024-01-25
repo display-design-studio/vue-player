@@ -3,37 +3,6 @@ import VuePlayer from './components/VuePlayer.vue'
 import MyControls from './components/custom/MyControls.vue'
 import MySvgControls from './components/custom/MySvgControls.vue'
 import './assets/reset.css'
-
-const onPlayerPlay = ({ event }) => {
-  console.log(event);
-};
-const onPlayerPause = ({ event }) => {
-};
-const onPlayerEnded = ({ event }) => {
-  // console.log(event.type);
-};
-const onPlayerLoadeddata = ({ event }) => {
-  // console.log(event.type);
-};
-const onPlayerWaiting = ({ event }) => {
-  // console.log(event.type);
-};
-const onPlayerPlaying = ({ event }) => {
-  // console.log(event.type);
-};
-const onPlayerTimeupdate = ({ event }) => {
-  // console.log({ event: event.type, time: event.target.currentTime });
-};
-const onPlayerCanplay = ({ event }) => {
-  // console.log(event.type);
-};
-const onPlayerCanplaythrough = ({ event }) => {
-  // console.log(event.type);
-};
-const playerStateChanged = ({ event }) => {
-  // console.log(event.type);
-};
-
 </script>
 
 <template>
@@ -41,12 +10,11 @@ const playerStateChanged = ({ event }) => {
     <h1 class="title">display vue-player</h1>
     <div class="container">
       <VuePlayer ref="playerRef" src="https://res.cloudinary.com/demo/video/upload/q_auto,f_auto/dog.mp4"
-        poster="https://demo-res.cloudinary.com/video/upload/q_auto,f_auto,w_500/dog.jpg" :showPlayerDuration="true"
-        :showPlayerTrack="true" :muted="true" :autoplay="false" :controls="false" :loop="true" @play="onPlayerPlay"
+        poster="https://demo-res.cloudinary.com/video/upload/q_auto,f_auto,w_500/dog.jpg" :showPlayerDuration="false"
+        :showPlayerTrack="false" :muted="true" :autoplay="false" :controls="false" :loop="true" @play="onPlayerPlay"
         @pause="onPlayerPause" @ended="onPlayerEnded" @loadeddata="onPlayerLoadeddata" @waiting="onPlayerWaiting"
         @playing="onPlayerPlaying" @timeupdate="onPlayerTimeupdate" @canplay="onPlayerCanplay"
         @canplaythrough="onPlayerCanplaythrough" @statechanged="playerStateChanged">
-        <!-- <MyControls /> -->
         <MySvgControls />
       </VuePlayer>
     </div>
