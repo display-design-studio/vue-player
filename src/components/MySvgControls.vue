@@ -1,22 +1,17 @@
 <script setup>
-import { useVuePlayer } from '../../utils/context'
-import Mute from './Mute.vue'
-import Unmute from './Unmute.vue'
-import Play from './Play.vue'
-import Pause from './Pause.vue'
-
+import { useVuePlayer } from '@display-studio/vue-player'
 const player = useVuePlayer()
 </script>
 
 <template>
   <div class="vue-player__controls">
     <button @click="player.togglePlay()" class="vue-player__controls-toggleplay">
-      <Pause v-if="player.playing" />
-      <Play v-else />
+      <img v-if="player.playing" src="../assets/pause.svg" alt="">
+      <img v-else src="../assets/play.svg" alt="">
     </button>
     <button @click="player.toggleMute()" class="vue-player__controls-togglemute">
-      <Unmute v-if="player.videoMuted" />
-      <Mute v-else />
+      <img v-if="player.videoMuted" src="../assets/unmute.svg" alt="">
+      <img v-else src="../assets/mute.svg" alt="">
     </button>
   </div>
 </template>
@@ -30,8 +25,8 @@ const player = useVuePlayer()
   width: fit-content;
   gap: 10px;
   padding: 10px;
-
 }
+
 
 .vue-player__controls-toggleplay,
 .vue-player__controls-togglemute {
@@ -47,10 +42,9 @@ const player = useVuePlayer()
   justify-content: center;
   padding: 10px;
 
-  svg {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  img {
+    width: 15px;
+    height: 15px;
   }
 
 }

@@ -1,20 +1,41 @@
 <script setup>
-import VuePlayer from './components/VuePlayer.vue'
-import MyControls from './components/custom/MyControls.vue'
-import MySvgControls from './components/custom/MySvgControls.vue'
-import './assets/reset.css'
+import { VuePlayer } from '@display-studio/vue-player'
+import MySvgControls from './components/MySvgControls.vue'
+import * as dat from 'dat.gui';
+import { onMounted, reactive } from 'vue';
+
+const player = reactive({
+  src: 'https://res.cloudinary.com/demo/video/upload/q_auto,f_auto/dog.mp4',
+  poster: 'https://demo-res.cloudinary.com/video/upload/q_auto,f_auto,w_500/dog.jpg',
+  controls: false,
+  loop: true,
+  autoplay: false,
+  muted: true,
+  preload: "auto",
+  showPlayerDuration: false,
+  showPlayerTrack: false,
+})
+
+onMounted(() => {
+  const gui = new dat.GUI();
+  gui.add(player, 'src')
+  gui.add(player, 'poster')
+  gui.add(player, 'controls')
+  gui.add(player, 'loop')
+  gui.add(player, 'autoplay')
+  gui.add(player, 'muted')
+  gui.add(player, 'preload')
+  gui.add(player, 'showPlayerDuration')
+  gui.add(player, 'showPlayerTrack')
+})
 </script>
 
 <template>
   <main class="app">
-    <h1 class="title">display vue-player</h1>
     <div class="container">
-      <VuePlayer ref="playerRef" src="https://res.cloudinary.com/demo/video/upload/q_auto,f_auto/dog.mp4"
-        poster="https://demo-res.cloudinary.com/video/upload/q_auto,f_auto,w_500/dog.jpg" :showPlayerDuration="false"
-        :showPlayerTrack="false" :muted="true" :autoplay="false" :controls="false" :loop="true" @play="onPlayerPlay"
-        @pause="onPlayerPause" @ended="onPlayerEnded" @loadeddata="onPlayerLoadeddata" @waiting="onPlayerWaiting"
-        @playing="onPlayerPlaying" @timeupdate="onPlayerTimeupdate" @canplay="onPlayerCanplay"
-        @canplaythrough="onPlayerCanplaythrough" @statechanged="playerStateChanged">
+      <VuePlayer :src="player.src" :poster="player.poster" :showPlayerDuration="player.showPlayerDuration"
+        :showPlayerTrack="player.showPlayerTrack" :muted="player.muted" :autoplay="player.autoplay"
+        :controls="player.controls" :loop="player.loop">
         <MySvgControls />
       </VuePlayer>
     </div>
@@ -31,7 +52,7 @@ import './assets/reset.css'
   height: 100vh;
 }
 
-.title {
+.app .title {
   width: 100%;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -46,6 +67,10 @@ import './assets/reset.css'
   margin: 100px auto;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 }
 
 .vue-player {
@@ -77,6 +102,8 @@ import './assets/reset.css'
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
   user-select: none;
+  display: flex;
+  gap: 5px;
 
   p {
     display: inline-block;
@@ -85,11 +112,11 @@ import './assets/reset.css'
 }
 
 .vue-player__current-time {
-  color: royalblue;
+  color: black;
 }
 
 .vue-player__separator {
-  color: royalblue;
+  color: black;
 
 }
 
@@ -139,6 +166,6 @@ import './assets/reset.css'
   height: 6px;
   cursor: ew-resize;
   background: black;
-  box-shadow: -245px 0 0 245px black;
+  box-shadow: -100vw 0 0 100vw black;
 }
 </style>

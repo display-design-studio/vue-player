@@ -1,40 +1,20 @@
 {
-  "name": "@display-studio/vue-player",
-  "description": "Lightweight, customizable, and easy-to-implement vue video player.",
-  "author": "display-studio (https://www.display.design/)",
-  "version": "0.0.3",
-  "homepage": "https://github.com/display-design-studio/vue-player",
-  "keywords": [
-    "vue",
-    "video",
-    "html5",
-    "player"
-  ],
-  "license": "MIT",
+  "name": "vue-player",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/vue-player.umd.cjs",
-  "module": "./dist/vue-player.js",
-  "exports": {
-    ".": {
-      "import": "./dist/vue-player.js",
-      "require": "./dist/vue-player.umd.cjs"
-    }
-  },
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@display-studio/vue-player": "^0.0.3",
+    "dat.gui": "^0.7.9",
     "vue": "^3.3.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.8",
-    "vue-tsc": "^1.8.25"
+    "vite": "^5.0.8"
   }
 }
