@@ -26,7 +26,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "publish": "bun run build && npm publish"
   },
   "dependencies": {
     "vue": "^3.3.11"
