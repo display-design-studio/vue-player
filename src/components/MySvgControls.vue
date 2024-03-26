@@ -10,8 +10,8 @@ const player = useVuePlayer()
       <img v-else src="../assets/play.svg" alt="">
     </button>
     <button @click="player.toggleMute()" class="vue-player__controls-togglemute">
-      <img v-if="player.videoMuted" src="../assets/unmute.svg" alt="">
-      <img v-else src="../assets/mute.svg" alt="">
+      <img v-if="player.videoMuted" src="../assets/mute.svg" alt="">
+      <img v-else src="../assets/unmute.svg" alt="">
     </button>
   </div>
 </template>
