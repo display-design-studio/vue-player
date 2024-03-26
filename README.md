@@ -242,6 +242,22 @@ const player = useVuePlayer()
 </style>
 ```
 
+## Provided props in the VuePlayer instance
+
+| Name                     | Type       | Description                                                    |
+| ------------------------ | ---------- | -------------------------------------------------------------- |
+| `togglePlay`             | `Function` | Function to toggle play state                                  |
+| `playing`                | `Boolean`  | Play state                                                     |
+| `toggleMute`             | `Function` | Function to toggle mute state                                  |
+| `videoMuted`             | `Boolean`  | Mute state                                                     |
+| `time`                   | `Number`   | Current video time                                             |
+| `duration`               | `Number`   | Video duration                                                 |
+| `convertTimeToDuration`  | `Function` | Function to convert time                                       |
+| `percentagePlayed`       | `Number`   | Percentage played                                              |
+| `seekToPercentage`       | `Function` | Function to set video current time based on clicked percentage |
+| `openFullScreen`         | `Function` | Enable fullscreen                                              |
+| `togglePictureInPicture` | `Function` | Enable PiP                                                     |
+
 ## Props
 
 | Name                | Type      | Required | Default  | Description                                                                                         |

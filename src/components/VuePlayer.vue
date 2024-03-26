@@ -112,6 +112,24 @@ const convertTimeToDuration = (seconds) => {
         .join(":");
 }
 
+const openFullScreen = () => {
+    if (playerRef.value.requestFullscreen) {
+        playerRef.value.requestFullscreen();
+    } else if (playerRef.value.webkitRequestFullscreen) {
+        playerRef.value.webkitRequestFullscreen();
+    } else if (playerRef.value.msRequestFullscreen) {
+        playerRef.value.msRequestFullscreen();
+    }
+}
+
+const togglePictureInPicture = () => {
+    if (document.pictureInPictureElement) {
+        document.exitPictureInPicture();
+    } else if (document.pictureInPictureEnabled) {
+        playerRef.value.requestPictureInPicture();
+    }
+}
+
 onMounted(() => {
     bindEvents()
 })
@@ -125,7 +143,9 @@ const injectedReactive = reactive({
     duration,
     convertTimeToDuration,
     percentagePlayed,
-    seekToPercentage
+    seekToPercentage,
+    openFullScreen,
+    togglePictureInPicture
 })
 
 provide('vue-player', injectedReactive)
