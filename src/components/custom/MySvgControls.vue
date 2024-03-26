@@ -4,7 +4,6 @@ import Mute from './Mute.vue'
 import Unmute from './Unmute.vue'
 import Play from './Play.vue'
 import Pause from './Pause.vue'
-
 const player = useVuePlayer()
 </script>
 
@@ -15,8 +14,8 @@ const player = useVuePlayer()
       <Play v-else />
     </button>
     <button @click="player.toggleMute()" class="vue-player__controls-togglemute">
-      <Unmute v-if="player.videoMuted" />
-      <Mute v-else />
+      <Mute v-if="player.videoMuted" />
+      <Unmute v-else />
     </button>
   </div>
 </template>

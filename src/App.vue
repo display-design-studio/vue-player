@@ -1,20 +1,32 @@
 <script setup>
-import VuePlayer from './components/VuePlayer.vue'
-import MyControls from './components/custom/MyControls.vue'
-import MySvgControls from './components/custom/MySvgControls.vue'
 import './assets/reset.css'
+import VuePlayer from './components/VuePlayer.vue'
+import MyPlayerDuration from './components/custom/MyPlayerDuration.vue';
+import MyPlayerTrack from "./components/custom/MyPlayerTrack.vue";
+import MySvgControls from './components/custom/MySvgControls.vue'
+
+const sources = [
+  {
+    src: 'https://res.cloudinary.com/demo/video/upload/q_auto,f_auto/dog.mp4',
+    type: 'video/mp4',
+    media: "(min-width: 900px)"
+  },
+  {
+    src: 'https://player.vimeo.com/progressive_redirect/playback/895761990/rendition/1080p/file.mp4?loc=external&log_user=0&signature=da459b352a4493914c2583edc8745b0d6b18248b751a19905c4cc806f10f0a14',
+    type: 'video/mp4',
+  }
+]
 </script>
 
 <template>
   <main class="app">
     <h1 class="title">display vue-player</h1>
     <div class="container">
-      <VuePlayer ref="playerRef" src="https://res.cloudinary.com/demo/video/upload/q_auto,f_auto/dog.mp4"
-        poster="https://demo-res.cloudinary.com/video/upload/q_auto,f_auto,w_500/dog.jpg" :showPlayerDuration="false"
-        :showPlayerTrack="false" :muted="true" :autoplay="false" :controls="false" :loop="true" @play="onPlayerPlay"
-        @pause="onPlayerPause" @ended="onPlayerEnded" @loadeddata="onPlayerLoadeddata" @waiting="onPlayerWaiting"
-        @playing="onPlayerPlaying" @timeupdate="onPlayerTimeupdate" @canplay="onPlayerCanplay"
-        @canplaythrough="onPlayerCanplaythrough" @statechanged="playerStateChanged">
+      <VuePlayer class="vue-player" :sources="sources"
+        poster="https://demo-res.cloudinary.com/video/upload/q_auto,f_auto,w_500/dog.jpg" :muted="true"
+        :autoplay="false" :controls="false" :loop="true" :togglePlayOnClick="true">
+        <MyPlayerDuration />
+        <MyPlayerTrack />
         <MySvgControls />
       </VuePlayer>
     </div>
@@ -58,87 +70,5 @@ import './assets/reset.css'
     width: 100%;
     height: auto;
   }
-}
-
-/* Player Timestamp */
-.vue-player__timestamp {
-  flex: 2;
-  text-align: center;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  padding: 10px;
-}
-
-.vue-player__timestamp-inner {
-  background-color: white;
-  border-radius: 5px;
-  padding: 2px 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
-  user-select: none;
-
-  p {
-    display: inline-block;
-    line-height: 100%;
-  }
-}
-
-.vue-player__current-time {
-  color: royalblue;
-}
-
-.vue-player__separator {
-  color: royalblue;
-
-}
-
-.vue-player__duration {
-  font-weight: bold;
-  color: black;
-}
-
-
-/* Player Track */
-.vue-player__video-track {
-  padding: 0 0 10px;
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50%;
-  height: 25px;
-  display: flex;
-  align-items: center;
-}
-
-.vue-player__video-track input[type="range"] {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  -webkit-appearance: none;
-  background-color: white;
-  border-radius: 5px;
-  color: black;
-}
-
-.vue-player__video-track input[type="range"]:focus {
-  outline: none;
-}
-
-.vue-player__video-track input[type="range"]::-webkit-slider-runnable-track {
-  height: 6px;
-  -webkit-appearance: none;
-  color: black;
-
-}
-
-.vue-player__video-track input[type="range"]::-webkit-slider-thumb {
-  width: 6px;
-  -webkit-appearance: none;
-  height: 6px;
-  cursor: ew-resize;
-  background: black;
-  box-shadow: -245px 0 0 245px black;
 }
 </style>

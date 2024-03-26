@@ -1,6 +1,4 @@
 <script setup>
-import VuePlayerTrack from "./VuePlayerTrack.vue";
-import VuePlayerDuration from './VuePlayerDuration.vue'
 import { ref, onMounted, provide, reactive } from 'vue'
 
 const EVENTS = [
@@ -17,7 +15,6 @@ const EVENTS = [
 ];
 
 const props = defineProps({
-    src: { type: String, required: true },
     controls: { type: Boolean, required: false, default: false },
     loop: { type: Boolean, required: false, default: false },
     width: { type: Number, required: false },
@@ -26,8 +23,8 @@ const props = defineProps({
     muted: { type: Boolean, required: false, default: false },
     poster: { type: String, required: false },
     preload: { type: String, required: false, default: "auto" },
-    showPlayerDuration: { type: Boolean, required: false, default: false },
-    showPlayerTrack: { type: Boolean, required: false, default: false }
+    sources: { type: Array, required: true },
+    togglePlayOnClick: { type: Boolean, required: false, default: false }
 })
 
 const emit = defineEmits([
@@ -109,6 +106,12 @@ const setMuted = (state) => {
     videoMuted.value = state
 }
 
+const convertTimeToDuration = (seconds) => {
+    return [Math.floor((seconds / 60) % 60), Math.floor(seconds % 60)]
+        .map(num => num.toString().padStart(2, "0"))
+        .join(":");
+}
+
 onMounted(() => {
     bindEvents()
 })
@@ -117,18 +120,25 @@ const injectedReactive = reactive({
     togglePlay,
     playing,
     toggleMute,
-    videoMuted
+    videoMuted,
+    time,
+    duration,
+    convertTimeToDuration,
+    percentagePlayed,
+    seekToPercentage
 })
 
 provide('vue-player', injectedReactive)
 </script>
 
 <template>
-    <div class="vue-player">
-        <video ref="playerRef" :src="src" :muted="muted" :autoplay="autoplay" :controls="controls" :loop="loop"
-            :width="width" :height="height" :poster="poster" :preload="preload" :playsinline="true" />
+    <div>
+        <video ref="playerRef" :muted="muted" :autoplay="autoplay" :controls="controls" :loop="loop" :width="width"
+            :height="height" :poster="poster" :preload="preload" :playsinline="true"
+            @click="togglePlayOnClick && togglePlay()">
+            <source v-for="(source, i) in sources" :key="i" :src="source.src" :media="source.media"
+                :type="source.type" />
+        </video>
         <slot />
-        <VuePlayerDuration v-if="showPlayerDuration" :time="time" :duration="duration" />
-        <VuePlayerTrack v-if="showPlayerTrack" :percentage="percentagePlayed" @seek="seekToPercentage" />
     </div>
 </template>
