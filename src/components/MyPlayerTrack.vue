@@ -50,6 +50,6 @@ const player = useVuePlayer()
     height: 6px;
     cursor: ew-resize;
     background: black;
-    box-shadow: -245px 0 0 245px black;
+    box-shadow: -100vw 0 0 100vw black;
 }
 </style>

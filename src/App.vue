@@ -30,7 +30,8 @@ onMounted(() => {
   <main class="app">
     <div class="container">
       <VuePlayer class="vue-player" :sources="player.sources" :toggle :poster="player.poster"
-        :autoplay="player.autoplay" :controls="player.controls" :togglePlayOnClick="player.togglePlayOnClick">
+        :autoplay="player.autoplay" :controls="player.controls" :togglePlayOnClick="player.togglePlayOnClick"
+        :loop="true">
         <MyPlayerDuration v-if="player.showPlayerDuration" />
         <MyPlayerTrack v-if="player.showPlayerTrack" />
         <MySvgControls v-if="player.myControls" />
