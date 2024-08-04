@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useVuePlayer } from '../../utils/context'
-const player = useVuePlayer()
+const { convertTimeToDuration, time, duration } = useVuePlayer()
 </script>
 
 <template>
     <div class="vue-player__timestamp">
         <div class="vue-player__timestamp-inner">
-            <p class="vue-player__current-time">{{ player.convertTimeToDuration(player.time) }}</p>
+            <p class="vue-player__current-time">{{ convertTimeToDuration(time) }}</p>
             <p class="vue-player__separator">/</p>
-            <p class="vue-player__duration">{{ player.convertTimeToDuration(player.duration) }}</p>
+            <p class="vue-player__duration">{{ convertTimeToDuration(duration) }}</p>
         </div>
     </div>
 </template>
@@ -18,7 +18,7 @@ const player = useVuePlayer()
     flex: 2;
     text-align: center;
     position: absolute;
-    bottom: 0px;
+    top: 0px;
     left: 0px;
     padding: 10px;
 }

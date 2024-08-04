@@ -20,7 +20,6 @@ const sources = [
 
 <template>
   <main class="app">
-    <h1 class="title">display vue-player</h1>
     <div class="container">
       <VuePlayer class="vue-player" :sources="sources"
         poster="https://demo-res.cloudinary.com/video/upload/q_auto,f_auto,w_500/dog.jpg" :muted="true"
@@ -54,10 +53,14 @@ const sources = [
 }
 
 .container {
-  width: 60%;
+  width: 90%;
   margin: 100px auto;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
+
+  @media (min-width:1024px) {
+    width: 50%;
+  }
 }
 
 .vue-player {

@@ -1,18 +1,6 @@
 <script setup>
-import { ref, onMounted, provide, reactive } from 'vue'
-
-const EVENTS = [
-    "play",
-    "pause",
-    "ended",
-    "loadeddata",
-    "waiting",
-    "playing",
-    "timeupdate",
-    "canplay",
-    "canplaythrough",
-    "statechanged",
-];
+import { ref, onMounted, provide, defineEmits } from 'vue'
+import { usePlayer } from '../composables/usePlayer.js'
 
 const props = defineProps({
     controls: { type: Boolean, required: false, default: false },
@@ -27,6 +15,26 @@ const props = defineProps({
     togglePlayOnClick: { type: Boolean, required: false, default: false }
 })
 
+const playerRef = ref(null)
+
+const {
+    events,
+    playing,
+    videoMuted,
+    duration,
+    percentagePlayed,
+    time,
+    play,
+    pause,
+    togglePlay,
+    toggleMute,
+    seekToPercentage,
+    convertTimeToDuration,
+    openFullScreen,
+    togglePictureInPicture,
+    bindEvents
+} = usePlayer(playerRef, props)
+
 const emit = defineEmits([
     "play",
     "pause",
@@ -37,118 +45,28 @@ const emit = defineEmits([
     "timeupdate",
     "canplay",
     "canplaythrough",
-    "statechanged",
+    "statechanged"
 ])
 
-const playerRef = ref(null)
-const playing = ref(false);
-const duration = ref(0);
-const percentagePlayed = ref(0);
-const videoMuted = ref(props.muted)
-const time = ref(0);
-
-const bindEvents = () => {
-    EVENTS.forEach((customEvent) => {
-        playerRef.value.addEventListener(customEvent, (event) => {
-
-            if (customEvent == "canplay") {
-                duration.value = playerRef.value.duration
-            }
-
-            if (customEvent == "timeupdate") {
-                percentagePlayed.value =
-                    (playerRef.value.currentTime / playerRef.value.duration) * 100;
-                time.value = playerRef.value.currentTime;
-            }
-
-            emit(customEvent, { event })
-        }, true)
-
-    });
-}
-
-const play = () => {
-    playerRef.value.play()
-    setPlaying(true)
-}
-
-const pause = () => {
-    playerRef.value.pause()
-    setPlaying(false)
-}
-
-const togglePlay = () => {
-    if (playing.value) {
-        pause()
-    } else {
-        play()
-    }
-}
-
-const setPlaying = (state) => {
-    playing.value = state
-}
-
-const seekToPercentage = (percentage) => {
-    playerRef.value.currentTime = (percentage / 100) * duration.value;
-}
-
-const toggleMute = () => {
-    if (videoMuted.value) {
-        setMuted(false)
-    } else {
-        setMuted(true)
-    }
-}
-
-const setMuted = (state) => {
-    playerRef.value.muted = state
-    videoMuted.value = state
-}
-
-const convertTimeToDuration = (seconds) => {
-    return [Math.floor((seconds / 60) % 60), Math.floor(seconds % 60)]
-        .map(num => num.toString().padStart(2, "0"))
-        .join(":");
-}
-
-const openFullScreen = () => {
-    if (playerRef.value.requestFullscreen) {
-        playerRef.value.requestFullscreen();
-    } else if (playerRef.value.webkitRequestFullscreen) {
-        playerRef.value.webkitRequestFullscreen();
-    } else if (playerRef.value.msRequestFullscreen) {
-        playerRef.value.msRequestFullscreen();
-    }
-}
-
-const togglePictureInPicture = () => {
-    if (document.pictureInPictureElement) {
-        document.exitPictureInPicture();
-    } else if (document.pictureInPictureEnabled) {
-        playerRef.value.requestPictureInPicture();
-    }
-}
-
 onMounted(() => {
-    bindEvents()
+    bindEvents(events, emit)
 })
 
-const injectedReactive = reactive({
-    togglePlay,
+provide('vue-player', {
     playing,
-    toggleMute,
     videoMuted,
-    time,
     duration,
-    convertTimeToDuration,
     percentagePlayed,
+    time,
+    play,
+    pause,
+    togglePlay,
+    toggleMute,
     seekToPercentage,
+    convertTimeToDuration,
     openFullScreen,
-    togglePictureInPicture
+    togglePictureInPicture,
 })
-
-provide('vue-player', injectedReactive)
 </script>
 
 <template>

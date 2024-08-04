@@ -1,12 +1,12 @@
 <script setup>
 import { useVuePlayer } from '../../utils/context'
-const player = useVuePlayer()
+const { percentagePlayed, seekToPercentage } = useVuePlayer()
 </script>
 
 <template>
     <div class="vue-player__video-track">
-        <input type="range" min="0" max="100" step="1" :value="player.percentagePlayed.toFixed(1)"
-            @input="(e) => player.seekToPercentage(e.target.value)" />
+        <input type="range" min="0" max="100" step="1" :value="percentagePlayed.toFixed(1)"
+            @input="(e) => seekToPercentage(e.target.value)" />
     </div>
 </template>
 
@@ -15,9 +15,8 @@ const player = useVuePlayer()
     padding: 0 0 10px;
     position: absolute;
     bottom: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
+    left: 10px;
+    width: 70%;
     height: 25px;
     display: flex;
     align-items: center;
