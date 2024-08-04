@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, provide, defineEmits } from 'vue'
+import { ref, onMounted, provide } from 'vue'
 import { usePlayer } from '../composables/usePlayer.js'
 
 const props = defineProps({
