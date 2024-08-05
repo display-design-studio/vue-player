@@ -52,6 +52,24 @@ const sources = [
 </style>
 ```
 
+## Nuxt Integration
+The library is easy to implement in any Nuxt project.
+Remember to wrap it on the ```<ClientOnly>``` component.
+
+```js
+<script setup>
+import { VuePlayer } from '@display-studio/vue-player'
+</script>
+
+<template>
+    <ClientOnly>
+        <VuePlayer class="vue-player" :sources="sources" poster="..." @play="...">
+            // Your custom controls here
+        </VuePlayer>
+    </ClientOnly>
+</template>
+```
+
 ## Custom Controls
 
 You can disable the native video tag controls and use your own custom ones.
@@ -82,7 +100,11 @@ import { VuePlayer } from '@display-studio/vue-player'
 ```js
 <script setup>
 import { useVuePlayer } from '@display-studio/vue-player'
+
 const player = useVuePlayer()
+
+// You can also do this:
+// const { playing, togglePlay, toggleMute, videoMuted } = useVuePlayer()
 </script>
 
 <template>
