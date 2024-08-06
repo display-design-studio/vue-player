@@ -5,7 +5,6 @@ const player = useVuePlayer()
 defineProps({
     controlsVisible: Boolean
 })
-
 </script>
 
 <template>
