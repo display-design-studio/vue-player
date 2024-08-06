@@ -100,20 +100,16 @@ import { VuePlayer } from '@display-studio/vue-player'
 ```js
 <script setup>
 import { useVuePlayer } from '@display-studio/vue-player'
-
-const player = useVuePlayer()
-
-// You can also do this:
-// const { playing, togglePlay, toggleMute, videoMuted } = useVuePlayer()
+const { playing, togglePlay, toggleMute, videoMuted } = useVuePlayer()
 </script>
 
 <template>
   <div class="vue-player__controls">
-    <button @click="player.togglePlay()" class="vue-player__controls-toggleplay">
-      {{ player.playing ? "pause" : "play" }}
+    <button @click="togglePlay()" class="vue-player__controls-toggleplay">
+      {{ playing ? "pause" : "play" }}
     </button>
-    <button @click="player.toggleMute()" class="vue-player__controls-togglemute">
-      {{ player.videoMuted ? "unmute" : "mute" }}
+    <button @click="toggleMute()" class="vue-player__controls-togglemute">
+      {{ videoMuted ? "unmute" : "mute" }}
     </button>
   </div>
 </template>
@@ -151,15 +147,15 @@ const player = useVuePlayer()
 ```js
 <script setup lang="ts">
 import { useVuePlayer } from '@display-studio/vue-player'
-const player = useVuePlayer()
+const { convertTimeToDuration, time, duration } = useVuePlayer()
 </script>
 
 <template>
     <div class="vue-player__timestamp">
         <div class="vue-player__timestamp-inner">
-            <p class="vue-player__current-time">{{ player.convertTimeToDuration(player.time) }}</p>
+            <p class="vue-player__current-time">{{ convertTimeToDuration(time) }}</p>
             <p class="vue-player__separator">/</p>
-            <p class="vue-player__duration">{{ player.convertTimeToDuration(player.duration) }}</p>
+            <p class="vue-player__duration">{{ convertTimeToDuration(duration) }}</p>
         </div>
     </div>
 </template>
@@ -209,13 +205,13 @@ const player = useVuePlayer()
 ```js
 <script setup lang="ts">
 import { useVuePlayer } from '@display-studio/vue-player'
-const player = useVuePlayer()
+const { percentagePlayed, seekToPercentage } = useVuePlayer()
 </script>
 
 <template>
     <div class="vue-player__video-track">
-        <input type="range" min="0" max="100" step="1" :value="player.percentagePlayed.toFixed(1)"
-            @input="(e) => player.seekToPercentage(e.target.value)" />
+        <input type="range" min="0" max="100" step="1" :value="percentagePlayed.toFixed(1)"
+            @input="(e) => seekToPercentage(e.target.value)" />
     </div>
 </template>
 

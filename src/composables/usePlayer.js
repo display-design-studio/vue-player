@@ -1,11 +1,13 @@
-import { ref } from 'vue'
+import { reactive, toRefs } from 'vue'
 
 export function usePlayer(playerRef, props) {
-    const playing = ref(false);
-    const duration = ref(0);
-    const percentagePlayed = ref(0);
-    const videoMuted = ref(props.muted)
-    const time = ref(0);
+    const player = reactive({
+        playing: false,
+        duration: 0,
+        percentagePlayed: 0,
+        videoMuted: props.muted,
+        time: 0
+    })
 
     const events = [
         "play",
@@ -22,16 +24,16 @@ export function usePlayer(playerRef, props) {
 
     const play = () => {
         playerRef.value.play()
-        playing.value = true
+        player.playing = true
     }
 
     const pause = () => {
         playerRef.value.pause()
-        playing.value = false
+        player.playing = false
     }
 
     const togglePlay = () => {
-        if (playing.value) {
+        if (player.playing) {
             pause()
         } else {
             play()
@@ -39,7 +41,7 @@ export function usePlayer(playerRef, props) {
     }
 
     const toggleMute = () => {
-        if (videoMuted.value) {
+        if (player.videoMuted) {
             setMuted(false)
         } else {
             setMuted(true)
@@ -48,11 +50,11 @@ export function usePlayer(playerRef, props) {
 
     const setMuted = (state) => {
         playerRef.value.muted = state
-        videoMuted.value = state
+        player.videoMuted = state
     }
 
     const seekToPercentage = (percentage) => {
-        playerRef.value.currentTime = (percentage / 100) * duration.value;
+        playerRef.value.currentTime = (percentage / 100) * player.duration;
     }
 
     const convertTimeToDuration = (seconds) => {
@@ -84,11 +86,11 @@ export function usePlayer(playerRef, props) {
             playerRef.value.addEventListener(customEvent, (event) => {
                 switch (customEvent) {
                     case "canplay":
-                        duration.value = playerRef.value.duration
+                        player.duration = playerRef.value.duration
                         break;
                     case "timeupdate":
-                        percentagePlayed.value = (playerRef.value.currentTime / playerRef.value.duration) * 100;
-                        time.value = playerRef.value.currentTime;
+                        player.percentagePlayed = (playerRef.value.currentTime / playerRef.value.duration) * 100;
+                        player.time = playerRef.value.currentTime;
                         break;
                 }
                 emit(customEvent, { event })
@@ -98,12 +100,8 @@ export function usePlayer(playerRef, props) {
     }
 
     return {
+        ...toRefs(player),
         events,
-        playing,
-        videoMuted,
-        duration,
-        percentagePlayed,
-        time,
         play,
         pause,
         togglePlay,
