@@ -1,25 +1,21 @@
 <script setup>
+import { ref } from 'vue';
 import { VuePlayer } from '@display-studio/vue-player'
-import Controls from './Controls.vue';
-import { reactive, ref } from 'vue';
+import Controls from './Controls.vue'
 
-const myPlayer = reactive({
-    sources: [{ src: './video.mp4', type: 'video/mp4' }],
-    // poster: './poster.png',
-    controls: false,
-    togglePlayOnClick: false,
-    myControls: true,
-    showPlayerDuration: false,
-    showPlayerTrack: false,
-})
+const sources = [
+    {
+        src: './video.mp4',
+        type: 'video/mp4',
+    }
+]
 
 const controlsVisible = ref(false)
 </script>
 
 <template>
     <VuePlayer @mouseenter="controlsVisible = true" @mouseleave="controlsVisible = false" class="vue-player"
-        :sources="myPlayer.sources" :poster="myPlayer.poster" :autoplay="myPlayer.autoplay"
-        :controls="myPlayer.controls" :togglePlayOnClick="myPlayer.togglePlayOnClick" :loop="true">
+        :sources="sources" :togglePlayOnClick="false" :loop="true">
         <Controls :controlsVisible />
     </VuePlayer>
 </template>

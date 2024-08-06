@@ -1,16 +1,16 @@
 <script setup>
 import { useVuePlayer } from '@display-studio/vue-player'
-const player = useVuePlayer()
+const { playing, togglePlay, toggleMute, videoMuted } = useVuePlayer()
 </script>
 
 <template>
   <div class="vue-player__controls">
-    <button @click="player.togglePlay()" class="vue-player__controls-toggleplay">
-      <img v-if="player.playing" src="../../assets/pause.svg" alt="">
+    <button @click="togglePlay()" class="vue-player__controls-toggleplay">
+      <img v-if="playing" src="../../assets/pause.svg" alt="">
       <img v-else src="../../assets/play.svg" alt="">
     </button>
-    <button @click="player.toggleMute()" class="vue-player__controls-togglemute">
-      <img v-if="player.videoMuted" src="../../assets/mute.svg" alt="">
+    <button @click="toggleMute()" class="vue-player__controls-togglemute">
+      <img v-if="videoMuted" src="../../assets/mute.svg" alt="">
       <img v-else src="../../assets/unmute.svg" alt="">
     </button>
   </div>

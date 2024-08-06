@@ -1,16 +1,15 @@
 <script setup>
 import { useVuePlayer } from '@display-studio/vue-player'
-const player = useVuePlayer()
-
+const { playing, togglePlay } = useVuePlayer()
 defineProps({
     controlsVisible: Boolean
 })
 </script>
 
 <template>
-    <Transition v-show="!player.playing || controlsVisible">
-        <button @click="player.togglePlay()" class="vue-player__controls-toggleplay">
-            <img v-if="player.playing" src="../../assets/pause.svg" alt="" loading="lazy">
+    <Transition v-show="!playing || controlsVisible">
+        <button @click="togglePlay()" class="vue-player__controls-toggleplay">
+            <img v-if="playing" src="../../assets/pause.svg" alt="" loading="lazy">
             <img v-else src="../../assets/play.svg" alt="" loading="lazy">
         </button>
     </Transition>

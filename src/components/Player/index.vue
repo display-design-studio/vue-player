@@ -1,36 +1,18 @@
 <script setup>
 import { VuePlayer } from '@display-studio/vue-player'
-import Duration from './Duration.vue'
-import Track from './Track.vue'
 import Controls from './Controls.vue'
-import * as dat from 'dat.gui';
-import { onMounted, reactive } from 'vue';
 
-const player = reactive({
-    sources: [{ src: './video.mp4', type: 'video/mp4' }],
-    // poster: './poster.png',
-    controls: false,
-    togglePlayOnClick: true,
-    myControls: true,
-    showPlayerDuration: false,
-    showPlayerTrack: false,
-})
-
-// onMounted(() => {
-//     const gui = new dat.GUI();
-//     gui.add(player, 'controls')
-//     gui.add(player, 'togglePlayOnClick')
-//     gui.add(player, 'myControls')
-//     gui.add(player, 'showPlayerDuration')
-//     gui.add(player, 'showPlayerTrack')
-// })
+const sources = [
+    {
+        src: './video.mp4',
+        type: 'video/mp4',
+    }
+]
 </script>
+
 <template>
-    <VuePlayer class="vue-player" :sources="player.sources" :poster="player.poster" :autoplay="player.autoplay"
-        :controls="player.controls" :togglePlayOnClick="player.togglePlayOnClick" :loop="true">
-        <Duration v-if="player.showPlayerDuration" />
-        <Track v-if="player.showPlayerTrack" />
-        <Controls v-if="player.myControls" />
+    <VuePlayer class="vue-player" :sources="sources" :autoplay="false" :togglePlayOnClick="true" :loop="true">
+        <Controls />
     </VuePlayer>
 </template>
 
