@@ -11,8 +11,8 @@ defineProps({
 <template>
     <Transition v-show="!player.playing || controlsVisible">
         <button @click="player.togglePlay()" class="vue-player__controls-toggleplay">
-            <img v-if="player.playing" src="../../assets/pause.svg" alt="">
-            <img v-else src="../../assets/play.svg" alt="">
+            <img v-if="player.playing" src="../../assets/pause.svg" alt="" loading="lazy">
+            <img v-else src="../../assets/play.svg" alt="" loading="lazy">
         </button>
     </Transition>
 </template>

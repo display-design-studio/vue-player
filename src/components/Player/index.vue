@@ -26,7 +26,7 @@ const player = reactive({
 // })
 </script>
 <template>
-    <VuePlayer class="vue-player" :sources="player.sources" :toggle :poster="player.poster" :autoplay="player.autoplay"
+    <VuePlayer class="vue-player" :sources="player.sources" :poster="player.poster" :autoplay="player.autoplay"
         :controls="player.controls" :togglePlayOnClick="player.togglePlayOnClick" :loop="true">
         <Duration v-if="player.showPlayerDuration" />
         <Track v-if="player.showPlayerTrack" />

@@ -18,7 +18,7 @@ const controlsVisible = ref(false)
 
 <template>
     <VuePlayer @mouseenter="controlsVisible = true" @mouseleave="controlsVisible = false" class="vue-player"
-        :sources="myPlayer.sources" :toggle :poster="myPlayer.poster" :autoplay="myPlayer.autoplay"
+        :sources="myPlayer.sources" :poster="myPlayer.poster" :autoplay="myPlayer.autoplay"
         :controls="myPlayer.controls" :togglePlayOnClick="myPlayer.togglePlayOnClick" :loop="true">
         <Controls :controlsVisible />
     </VuePlayer>

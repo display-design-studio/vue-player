@@ -4,10 +4,10 @@ const player = useVuePlayer()
 </script>
 
 <template>
-    <div class="vue-player__video-track">
+    <!-- <div class="vue-player__video-track">
         <input type="range" min="0" max="100" step="1" :value="player.percentagePlayed.toFixed(1)"
             @input="(e) => player.seekToPercentage(e.target.value)" />
-    </div>
+    </div> -->
 </template>
 
 <style scoped>
