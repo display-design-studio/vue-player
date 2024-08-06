@@ -9,15 +9,18 @@ import FullPlayer from './components/FullPlayer/index.vue'
     <h1>Vue Player</h1>
     <div class="container relative">
       <MinimalPlayer />
-      <a href="" target="_blank" rel="noopener noreferrer">Example code</a>
+      <a href="https://github.com/display-design-studio/vue-player/blob/www/src/components/MinimalPlayer/index.vue"
+        target="_blank" rel="noopener noreferrer">Example code</a>
     </div>
     <div class="container relative">
       <Player />
-      <a href="" target="_blank" rel="noopener noreferrer">Example code</a>
+      <a href="https://github.com/display-design-studio/vue-player/blob/www/src/components/Player/index.vue"
+        target="_blank" rel="noopener noreferrer">Example code</a>
     </div>
     <div class="container relative">
       <FullPlayer />
-      <a href="" target="_blank" rel="noopener noreferrer">Example code</a>
+      <a href="https://github.com/display-design-studio/vue-player/blob/www/src/components/FullPlayer/index.vue"
+        target="_blank" rel="noopener noreferrer">Example code</a>
     </div>
     <a href="https://display.design/" target="_blank" rel="noopener noreferrer">
       <span class="display-cube"></span>
