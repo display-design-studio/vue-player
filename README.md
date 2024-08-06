@@ -1,4 +1,7 @@
 # Vue Player
+![NPM Version](https://img.shields.io/npm/v/%40display-studio%2Fvue-player?style=plastic&label=npm&labelColor=%23000000&color=%23FFFFFF&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40display-studio%2Fvue-player)
+![NPM Downloads](https://img.shields.io/npm/dm/%40display-studio%2Fvue-player?style=plastic&label=downloads&labelColor=%23000000&color=%23FFFFFF&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40display-studio%2Fvue-player)
+![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/%40display-studio%2Fvue-player?style=plastic&label=size&labelColor=%23000000&color=%23FFFFFF&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40display-studio%2Fvue-player)
 
 ## Introduction
 
