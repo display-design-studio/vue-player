@@ -1,13 +1,20 @@
 <script setup>
 import { useVuePlayer } from '@display-studio/vue-player'
 const player = useVuePlayer()
+
+defineProps({
+    controlsVisible: Boolean
+})
+
 </script>
 
 <template>
-    <button @click="player.togglePlay()" class="vue-player__controls-toggleplay">
-        <img v-if="player.playing" src="../../assets/pause.svg" alt="">
-        <img v-else src="../../assets/play.svg" alt="">
-    </button>
+    <Transition v-show="!player.playing || controlsVisible">
+        <button @click="player.togglePlay()" class="vue-player__controls-toggleplay">
+            <img v-if="player.playing" src="../../assets/pause.svg" alt="">
+            <img v-else src="../../assets/play.svg" alt="">
+        </button>
+    </Transition>
 </template>
 
 
@@ -25,8 +32,6 @@ const player = useVuePlayer()
 
 .vue-player__controls-toggleplay,
 .vue-player__controls-togglemute {
-    flex: 0 0 auto;
-    display: block;
     background-color: white;
     border: none;
     border-radius: 100%;
@@ -36,16 +41,15 @@ const player = useVuePlayer()
     align-items: center;
     justify-content: center;
     padding: 10px;
-
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    cursor: pointer;
 
     &:deep(img) {
         width: 15px;
         height: 15px;
     }
-
 }
 </style>

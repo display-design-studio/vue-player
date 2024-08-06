@@ -5,9 +5,9 @@ import { reactive, ref } from 'vue';
 
 const myPlayer = reactive({
     sources: [{ src: './video.mp4', type: 'video/mp4' }],
-    poster: './poster.png',
+    // poster: './poster.png',
     controls: false,
-    togglePlayOnClick: true,
+    togglePlayOnClick: false,
     myControls: true,
     showPlayerDuration: false,
     showPlayerTrack: false,
@@ -20,9 +20,7 @@ const controlsVisible = ref(false)
     <VuePlayer @mouseenter="controlsVisible = true" @mouseleave="controlsVisible = false" class="vue-player"
         :sources="myPlayer.sources" :toggle :poster="myPlayer.poster" :autoplay="myPlayer.autoplay"
         :controls="myPlayer.controls" :togglePlayOnClick="myPlayer.togglePlayOnClick" :loop="true">
-        <Transition>
-            <Controls v-show="controlsVisible" />
-        </Transition>
+        <Controls :controlsVisible />
     </VuePlayer>
 </template>
 
@@ -46,7 +44,6 @@ const controlsVisible = ref(false)
     &:deep(video) {
         width: 100%;
         height: auto;
-        cursor: pointer;
     }
 }
 </style>

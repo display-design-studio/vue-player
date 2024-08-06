@@ -1,16 +1,27 @@
 <script setup>
 import MinimalPlayer from './components/MinimalPlayer/index.vue'
 import Player from './components/Player/index.vue'
+import FullPlayer from './components/FullPlayer/index.vue'
 </script>
 
 <template>
   <main class="app">
+    <h1>Vue Player</h1>
     <div class="container relative">
       <MinimalPlayer />
+      <a href="" target="_blank" rel="noopener noreferrer">Example code</a>
     </div>
     <div class="container relative">
       <Player />
+      <a href="" target="_blank" rel="noopener noreferrer">Example code</a>
     </div>
+    <div class="container relative">
+      <FullPlayer />
+      <a href="" target="_blank" rel="noopener noreferrer">Example code</a>
+    </div>
+    <a href="https://display.design/" target="_blank" rel="noopener noreferrer">
+      <span class="display-cube"></span>
+    </a>
   </main>
 </template>
 
@@ -104,46 +115,11 @@ video {
   vertical-align: baseline;
 }
 
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+.display-cube {
   display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+  width: 20px;
+  height: 20px;
+  background-color: black;
 }
 
 html {
@@ -153,23 +129,45 @@ html {
 
   body {
     overscroll-behavior: none;
+    font-family: sans-serif;
+    text-transform: uppercase;
+
+    h1 {
+      font-size: 40px;
+    }
+
+    p,
+    a {
+      font-size: 15px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #000;
+      width: fit-content;
+
+      &:hover {
+        color: #1400FF;
+      }
+    }
   }
 }
 
 
 .app {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  overflow: hidden;
+  align-items: center;
+  gap: 60px;
+  padding-block: 60px;
+  padding-inline: 10px;
 }
 
 .container {
   width: 60%;
-  margin: 100px auto;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
   @media (max-width: 1024px) {
     width: 100%;

@@ -12,8 +12,8 @@ const player = reactive({
     controls: false,
     togglePlayOnClick: true,
     myControls: true,
-    showPlayerDuration: false,
-    showPlayerTrack: false,
+    showPlayerDuration: true,
+    showPlayerTrack: true,
 })
 
 // onMounted(() => {

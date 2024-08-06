@@ -30,6 +30,7 @@ const player = useVuePlayer()
 
 .vue-player__controls-toggleplay,
 .vue-player__controls-togglemute {
+  flex: 0 0 auto;
   display: block;
   background-color: white;
   border: none;
@@ -41,7 +42,6 @@ const player = useVuePlayer()
   justify-content: center;
   padding: 10px;
   cursor: pointer;
-
 
   &:deep(img) {
     width: 15px;
